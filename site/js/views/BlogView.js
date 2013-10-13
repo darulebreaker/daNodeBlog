@@ -10,10 +10,9 @@ app.BlogView= Backbone.View.extend({
     tag: 'div',
 
 
-    events: {
-        "click #edit": 'renderEdit'
-    },
+
     initialize:function(){
+        this.vent= app.vent;
         this.collection=new app.Blog([
             {title:"one", content:"hello world"},
             {title:"two", content:"bye bye now"}
@@ -27,35 +26,40 @@ app.BlogView= Backbone.View.extend({
         },this);
     },
 
+    editEntry: function(){
+        console.log('triggered in blog view');
+
+    },
 
     renderEntry: function(item){
 
         var entryView =new app.EntryView({
-            model: item
+        model: item,
+        vent:app.vent
         });
         this.$el.append(entryView.render().el);
-    },
+    }
 
-    renderEdit: function(event) {
-        event.preventDefault();
-        var parent = $(event.target).parent();
-
-        var formData={}; //new class
-        $( parent ).children( 'div' ).each( function( i, el ) {
-            console.log(i+ $(el).attr('id') + ":" +$(el).html()  );
-            if( $( el ).html() != '' )
-            {
-             //   console.log(el.id +el)
-                formData[ $(el).attr('id')  ] = $(el).html();
-            }
-        });
-        console.log(formData);
-        var editView = new app.EntryEditView({
-            model: formData
-        });
-        $(parent).html(editView.render().el);
+//    renderEdit: function(event) {
+//        event.preventDefault();
+//        var parent = $(event.target).parent();
+//
+//        var formData={}; //new class
+//        $( parent ).children( 'div' ).each( function( i, el ) {
+//            console.log(i+ $(el).attr('id') + ":" +$(el).html()  );
+//            if( $( el ).html() != '' )
+//            {
+//             //   console.log(el.id +el)
+//                formData[ $(el).attr('id')  ] = $(el).html();
+//            }
+//        });
+//        console.log(formData);
+//        var editView = new app.EntryEditView({
+//            model: formData
+//        });
+//        $(parent).html(editView.render().el);
         //console.log(parent);
 
-    }
+//    }
 
 });
