@@ -11,20 +11,24 @@
 </body>
 
 <script type="text/template" id="entryViewTemplate">
+
 <div class="entryView">
-    <div><%= title %></div>
-    <div><%= content %></div>
+
+    <div id="title"><%= title %></div>
+    <div id="content"><%= content %></div>
     <button id="edit">Edit</button>
+
 </div>
+
 
 </script>
 
 <script type="text/template" id="editEntryTemplate">
 <div id="edit">
-    <form id="editEntry">
+    <form id="editEntry" action="#">
         <div>
-        <label for="title">Title:</label><input id="title" type="text"><br>
-        <label for="content">Content:</label><textarea id="content" type="text"></textarea>
+        <label for="title">Title:</label><input id="title" type="text" value="<%= title %>"><br>
+        <label for="content">Content:</label><input id="content" type="text" value="<%= content %>">
             <button id="save">Save</button>
         </div>
     </form>

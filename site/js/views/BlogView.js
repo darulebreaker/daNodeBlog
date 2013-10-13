@@ -9,6 +9,10 @@ app.BlogView= Backbone.View.extend({
     el:'#blog',
     tag: 'div',
 
+
+    events: {
+        "click #edit": 'renderEdit'
+    },
     initialize:function(){
         this.collection=new app.Blog([
             {title:"one", content:"hello world"},
@@ -25,11 +29,33 @@ app.BlogView= Backbone.View.extend({
 
 
     renderEntry: function(item){
+
         var entryView =new app.EntryView({
             model: item
         });
         this.$el.append(entryView.render().el);
-    }
+    },
 
+    renderEdit: function(event) {
+        event.preventDefault();
+        var parent = $(event.target).parent();
+
+        var formData={}; //new class
+        $( parent ).children( 'div' ).each( function( i, el ) {
+            console.log(i+ $(el).attr('id') + ":" +$(el).html()  );
+            if( $( el ).html() != '' )
+            {
+             //   console.log(el.id +el)
+                formData[ $(el).attr('id')  ] = $(el).html();
+            }
+        });
+        console.log(formData);
+        var editView = new app.EntryEditView({
+            model: formData
+        });
+        $(parent).html(editView.render().el);
+        //console.log(parent);
+
+    }
 
 });
