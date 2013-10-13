@@ -6,6 +6,6 @@ var app= app|| {};
 
 $(function(){
 
-    new app.SnippetView();
+    new app.BlogView();
 
 });

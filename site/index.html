@@ -10,8 +10,8 @@
 </div>
 </body>
 
-<script type="text/template" id="snippetViewTemplate">
-<div class="snippetView">
+<script type="text/template" id="entryViewTemplate">
+<div class="entryView">
     <div><%= title %></div>
     <div><%= content %></div>
     <button id="edit">Edit</button>
@@ -19,9 +19,9 @@
 
 </script>
 
-<script type="text/template" id="editSnippetTemplate">
+<script type="text/template" id="editEntryTemplate">
 <div id="edit">
-    <form id="editSnippet">
+    <form id="editEntry">
         <div>
         <label for="title">Title:</label><input id="title" type="text"><br>
         <label for="content">Content:</label><textarea id="content" type="text"></textarea>
@@ -39,9 +39,9 @@
 <script src = "js/lib/jquery.min.js"></script>
 <script src="js/lib/underscore-min.js"></script>
 <script src="js/lib/backbone-min.js"></script>
-<script src="js/models/Snippet.js"></script>
+<script src="js/models/Entry.js"></script>
 <script src="js/collections/Blog.js"></script>
-<script src="js/views/SnippetView.js"></script>
+<script src="js/views/EntryView.js"></script>
 <script src="js/views/BlogView.js"></script>
 <script src="js/app.js"></script>
 

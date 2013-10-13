@@ -6,7 +6,7 @@
 var app= app|| {};
 
 app.Blog= Backbone.Collection.extend({
-    model: app.Snippet
+    model: app.Entry
 
 
 
