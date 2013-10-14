@@ -52,6 +52,9 @@ app.EntryEditView = Backbone.View.extend({
 //      this.render();
 //
 //    },
+    events: {
+        'click #save': 'saveEntry'
+    },
     initialize: function(options){
         _.bindAll(this,"editEntry");
         options.vent.bind("editEntry", this.editEntry);
@@ -68,9 +71,75 @@ app.EntryEditView = Backbone.View.extend({
         this.$el.html(this.template(this.model.toJSON()));
 
         return this;
+    },
+
+    saveEntry: function (event){
+        event.preventDefault();
+          var formData={};
+        console.log(this.$el.html());
+        $('.edit div').children('input').each(function(i, el){
+           if($(el).val!=''){
+               formData[el.id] = $(el).val();
+           }
+
+        });
+
+        if(formData){
+        this.model.save(formData); //set up database then use save
+        }
+          this.$el.html("");
     }
 
 });
+
+app.EntryCreateView = Backbone.View.extend({
+    el:'#create',
+    tag: 'div',
+    //className:'snippetView',
+    template: _.template($('#createEntryTemplate').html()),
+//    initialize:function(){
+//      this.models=new app.Entry();
+//      this.render();
+//
+//    },
+    events: {
+        'click #create': 'createEntry'
+    },
+//    initialize: function(options){
+//        _.bindAll(this,"createEntry");
+//        options.vent.bind("createEntry", this.createEntry);
+//    },
+
+
+
+    render: function(){
+
+        this.$el.html(this.template());
+
+        return this;
+    },
+
+    createEntry: function (event){
+        event.preventDefault();
+        var formData={};
+        console.log(this.$el.html());
+        $('.create div').children('input').each(function(i, el){
+            if($(el).val!=''){
+                formData[el.id] = $(el).val();
+            }
+
+        });
+
+        if(formData){
+            this.model.create(formData); //set up database then use save
+        }
+        this.$el.html("");
+    }
+
+});
+
+
+
 
 app.vent = _.extend({}, Backbone.Events);
 
