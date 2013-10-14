@@ -4,18 +4,31 @@
     <title>Da Blog</title>
 </head>
 <body>
-<div id='blog'>
 
+<div id='blog'>
+    <div class="createTemp">
+        <form id="createEntry" action="#">
+            <div>
+                <label for="title">Title:</label><input id="title" type="text" ><br>
+                <label for="content">Content:</label><input id="content" type="text">
+                <button id="createTemp">Create</button>
+            </div>
+        </form>
+
+    </div>
 
 </div>
+
+<div id='create'></div>
 <div id='edit'></div>
+
 </body>
 
 <script type="text/template" id="entryViewTemplate">
 
 <div class="entryView">
 
-    <div id="title"><%= title %></div>
+    <div id="title"><h1><%= title %></h1></div>
     <div id="content"><%= content %></div>
     <button id="edit">Edit</button>
 
@@ -25,7 +38,7 @@
 </script>
 
 <script type="text/template" id="editEntryTemplate">
-<div id="edit">
+<div class="edit">
     <form id="editEntry" action="#">
         <div>
         <label for="title">Title:</label><input id="title" type="text" value="<%= title %>"><br>
@@ -35,6 +48,21 @@
     </form>
 
 </div>
+</script>
+
+
+<script type="text/template" id="createEntryTemplate">
+<div class="create">
+    <form id="createEntry" action="#">
+        <div>
+        <label for="title">Title:</label><input id="title" type="text" ><br>
+        <label for="content">Content:</label><input id="content" type="text">
+            <button id="create">Create</button>
+        </div>
+    </form>
+
+</div>
+
 
 </script>
 

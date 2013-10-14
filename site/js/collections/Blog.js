@@ -6,7 +6,10 @@
 var app= app|| {};
 
 app.Blog= Backbone.Collection.extend({
-    model: app.Entry
+    model: app.Entry,
+    url: '/api/entries'
+
+
 
 
 
