@@ -1,3 +1,13 @@
 this.models w/ an "s"
 $('#snippetViewTemplate')  w/ a #
 
+this.$el is undefined --- the event aggregator was not correct    should be 
+
+         "_.bindAll(this,"createNew");
+        options.vent.bind('createNew',this.createNew);" 
+	and createNew would call this.render so the scope is correct
+
+       you had   "  options.vent.bind('createNew',this.render);" 
+
+
+           

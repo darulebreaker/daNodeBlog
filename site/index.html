@@ -4,22 +4,23 @@
     <title>Da Blog</title>
 </head>
 <body>
-
+<div id='createEntry'></div>
 <div id='blog'>
-    <div class="createTemp">
-        <form id="createEntry" action="#">
-            <div>
-                <label for="title">Title:</label><input id="title" type="text" ><br>
-                <label for="content">Content:</label><input id="content" type="text">
-                <button id="createTemp">Create</button>
-            </div>
-        </form>
+    <p id='new'>Create</p>
+    <!--<div class="createTemp">-->
+        <!--<form id="createEntry" action="#">-->
+            <!--<div>-->
+                <!--<label for="title">Title:</label><input id="title" type="text" ><br>-->
+                <!--<label for="content">Content:</label><input id="content" type="text">-->
+                <!--<button id="createTemp">Create</button>-->
+            <!--</div>-->
+        <!--</form>-->
 
-    </div>
+    <!--</div>-->
 
 </div>
 
-<div id='create'></div>
+
 <div id='edit'></div>
 
 </body>
@@ -31,6 +32,7 @@
     <div id="title"><h1><%= title %></h1></div>
     <div id="content"><%= content %></div>
     <button id="edit">Edit</button>
+    <button id="delete">Delete</button>
 
 </div>
 
@@ -57,7 +59,7 @@
         <div>
         <label for="title">Title:</label><input id="title" type="text" ><br>
         <label for="content">Content:</label><input id="content" type="text">
-            <button id="create">Create</button>
+            <button id="createNew">Create</button>
         </div>
     </form>
 

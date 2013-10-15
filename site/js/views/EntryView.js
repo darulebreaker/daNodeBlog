@@ -19,7 +19,8 @@ app.EntryView= Backbone.View.extend({
     template: _.template($('#entryViewTemplate').html()),
 
     events: {
-        "click #edit": 'editEntry'
+        "click #edit": 'editEntry',
+        "click #delete": 'deleteEntry'
     },
 
     initialize: function(options){
@@ -30,6 +31,12 @@ app.EntryView= Backbone.View.extend({
 //      this.render();
 //
 //    },
+
+    deleteEntry: function(){
+        this.model.destroy();
+        this.close();
+    },
+
     render: function(){
         this.$el.html(this.template(this.model.toJSON()));
         return this;

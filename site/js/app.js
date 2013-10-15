@@ -6,6 +6,6 @@ var app= app|| {};
 
 $(function(){
 
-    new app.BlogView();
+    new app.BlogView({vent:app.vent2});
 
 });

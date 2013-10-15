@@ -5,17 +5,19 @@
 
 var app= app||{};
 
+app.collection= new app.Blog();
+
 app.BlogView= Backbone.View.extend({
     el:'#blog',
     tag: 'div',
 
     events: {
-        'click #createTemp': 'createNew'
+        'click #new': 'createNew'
     },
 
-    initialize:function(){
-        this.vent= app.vent;
-        this.collection=new app.Blog();
+    initialize:function(options){
+        this.vent=options.vent;
+        this.collection=app.collection;
           //  {title:"one", content:"hello world"},
           //  {title:"two", content:"bye bye now"}
 
@@ -44,26 +46,15 @@ app.BlogView= Backbone.View.extend({
 
         var entryView =new app.EntryView({
         model: item,
-        vent:app.vent
+        vent: app.vent
         });
         this.$el.append(entryView.render().el);
     },
 
 
     createNew: function (event){
-        event.preventDefault();
-        var formData={};
-        console.log(this.$el.html());
-        $('.createTemp div').children('input').each(function(i, el){
-            if($(el).val!=''){
-                formData[el.id] = $(el).val();
-            }
-
-        });
-
-        if(formData){
-            this.collection.create(formData); //set up database then use save
-        }
+       console.log('load new entry view');
+       this.vent.trigger("createNew", this.collection);
 
     }
 //    renderEdit: function(event) {
@@ -89,3 +80,55 @@ app.BlogView= Backbone.View.extend({
 //    }
 
 });
+
+app.BlogCreateView= Backbone.View.extend({
+    el:'#createEntry',
+    tag: 'div',
+
+    template: _.template($('#createEntryTemplate').html()),
+
+    initialize: function(options){
+        _.bindAll(this,"createNew");
+        options.vent.bind('createNew',this.createNew);
+
+        this.collection=app.collection;
+    },
+
+    createNew: function(){
+      this.render();
+    },
+
+    events:{
+        'click #createNew': 'createNewEntry'
+    },
+
+
+    render: function(){
+
+        this.$el.html(this.template());
+        return this;
+    },
+
+    createNewEntry: function (event){
+        event.preventDefault();
+        var formData={};
+        console.log(this.$el.html());
+        $('.create div').children('input').each(function(i, el){
+            if($(el).val!=''){
+                formData[el.id] = $(el).val();
+            }
+
+        });
+
+        if(formData){
+            this.collection.create(formData); //set up database then use save
+        }
+        this.$el.html("");
+    }
+
+
+
+});
+
+app.vent2 = _.extend({},Backbone.Events);
+var createEntryView = new app.BlogCreateView({vent:app.vent2});
