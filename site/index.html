@@ -1,12 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Da Blog</title>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <style type="text/css">
+
+            /* Sticky footer styles
+            -------------------------------------------------- */
+
+        html,
+        body {
+            height: 100%;
+            /* The html and body elements cannot have any padding or margin. */
+        }
+
+            /* Wrapper for page content to push down footer */
+        #wrap {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            /* Negative indent footer by it's height */
+            margin: 0 auto -60px;
+        }
+
+            /* Set the fixed height of the footer here */
+        #push,
+        #footer {
+            height: 60px;
+        }
+        #footer {
+            background-color: #f5f5f5;
+        }
+
+            /* Lastly, apply responsive CSS fixes as necessary */
+        @media (max-width: 767px) {
+            #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+
+
+            /* Custom page CSS
+            -------------------------------------------------- */
+            /* Not required for template or sticky footer method. */
+
+        #wrap > .container {
+            padding-top: 60px;
+        }
+        .container .credit {
+            margin: 20px 0;
+        }
+
+        code {
+            font-size: 80%;
+        }
+
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 <body>
-<div id='createEntry'></div>
+<div id="wrap">
+
+<div class="navbar  navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">Da Node Blog</a>
+            <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <form class="navbar-form pull-right">
+                <input class="span2" type="text" placeholder="Email">
+                <input class="span2" type="password" placeholder="Password">
+                <button type="submit" class="btn">Sign in</button>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div class="container">
+    <div class="hero-unit">
+    <h1><a href="#">Da Node Blog</a></h1>
+    </div>
+    <div id='createEntry'></div>
 <div id='blog'>
-    <p id='new'>Create</p>
+    <a href="#" class="btn btn-large btn-success" id='new'>Create</a>
     <!--<div class="createTemp">-->
         <!--<form id="createEntry" action="#">-->
             <!--<div>-->
@@ -19,9 +106,21 @@
     <!--</div>-->
 
 </div>
+    <div id='edit'></div>
 
+</div>
+</div>
+<div id="push"></div>
+</div>
 
-<div id='edit'></div>
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">Company</p>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
 
 </body>
 
@@ -31,8 +130,8 @@
 
     <div id="title"><h1><%= title %></h1></div>
     <div id="content"><%= content %></div>
-    <button id="edit">Edit</button>
-    <button id="delete">Delete</button>
+    <a href="#" class="btn btn-warning">Edit</a>
+    <a href="#" class="btn btn-danger" id="delete">Delete</a>
 
 </div>
 
@@ -45,7 +144,7 @@
         <div>
         <label for="title">Title:</label><input id="title" type="text" value="<%= title %>"><br>
         <label for="content">Content:</label><input id="content" type="text" value="<%= content %>">
-            <button id="save">Save</button>
+            <a href="#" class="btn btn-success" id="save">Save</a>
         </div>
     </form>
 
@@ -59,7 +158,7 @@
         <div>
         <label for="title">Title:</label><input id="title" type="text" ><br>
         <label for="content">Content:</label><input id="content" type="text">
-            <button id="createNew">Create</button>
+            <a href="#" class="btn btn-success" id="createNew">Create</a>
         </div>
     </form>
 
