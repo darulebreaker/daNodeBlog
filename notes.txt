@@ -10,4 +10,4 @@ this.$el is undefined --- the event aggregator was not correct    should be
        you had   "  options.vent.bind('createNew',this.render);" 
 
 
-           
+   passport basic version -- didn't have name = "username" or name="password" on the sign in form
